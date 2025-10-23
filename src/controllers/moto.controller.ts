@@ -26,7 +26,11 @@ export const createMoto = async (req: Request, res: Response) => {
 
 export const getMotos = async (req: Request, res: Response) => {
 	try {
-		const motos = await Moto.find();
+		const motos = await Moto.find({
+			order: {
+				id:'ASC',
+			},
+		});
 
 		return res.json(motos);
 	} catch (error) {
